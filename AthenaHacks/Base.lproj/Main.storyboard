@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H2h-16-uzH">
-                                <rect key="frame" x="21" y="204" width="332" height="203"/>
+                                <rect key="frame" x="21" y="74" width="332" height="203"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <state key="normal" title="Record"/>
@@ -28,17 +28,25 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yrN-la-cDg">
-                                <rect key="frame" x="16" y="435" width="343" height="155"/>
+                                <rect key="frame" x="16" y="242" width="343" height="273"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JD8-Sl-lam">
+                                <rect key="frame" x="21" y="523" width="332" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="View Stats"/>
+                                <connections>
+                                    <segue destination="Ky8-E3-r2D" kind="show" id="q5w-j4-jRZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="8ET-dk-EaP"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Record" id="OXN-cU-8Xa"/>
+                    <tabBarItem key="tabBarItem" title="Record" image="icons8-add-record-50" id="OXN-cU-8Xa"/>
                     <connections>
                         <outlet property="recordButton" destination="H2h-16-uzH" id="38F-lM-6aM"/>
                         <outlet property="textView" destination="yrN-la-cDg" id="5r5-S8-xsF"/>
@@ -47,6 +55,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="91n-am-d78" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="677.60000000000002" y="131.78410794602701"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="VJj-Z3-gJ5">
+            <objects>
+                <viewController id="Ky8-E3-r2D" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bjw-0V-Dxu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="Cnh-EV-zqB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lTc-r9-zFm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1438" y="132"/>
         </scene>
         <!--Settings-->
         <scene sceneID="WGh-gb-O98">
@@ -74,7 +97,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="YEs-5Q-id0"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="History" id="vtN-FC-New"/>
+                    <tabBarItem key="tabBarItem" title="History" image="icons8-time-machine-50" id="vtN-FC-New"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zrb-Yt-ydv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -101,4 +124,8 @@
             <point key="canvasLocation" x="-163.19999999999999" y="132.23388305847078"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-add-record-50" width="50" height="50"/>
+        <image name="icons8-time-machine-50" width="50" height="50"/>
+    </resources>
 </document>
