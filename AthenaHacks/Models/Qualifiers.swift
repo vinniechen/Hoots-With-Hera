@@ -9,6 +9,5 @@
 import UIKit
 
 class Qualifiers: NSObject {
-    static var words : [Int] = []
     static var words : [String] = ["just", "I think", "uh", "um", "like", "actually", "sorry", "I feel", "maybe", "confused", "hopefully", "I guess", "but yeah", "but so", "well", "you know", "probably", "sort of", "literally", "basically"]
 }
