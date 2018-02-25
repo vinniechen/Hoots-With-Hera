@@ -24,16 +24,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <state key="normal" title="Record"/>
                                 <connections>
-                                    <action selector="recordTapped:" destination="fM3-Ji-LAo" eventType="touchUpInside" id="Hc2-8n-lgl"/>
+                                    <action selector="recordButtonTapped" destination="fM3-Ji-LAo" eventType="touchUpInside" id="qcQ-RN-Gut"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yrN-la-cDg">
+                                <rect key="frame" x="16" y="435" width="343" height="155"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="8ET-dk-EaP"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Record" id="OXN-cU-8Xa"/>
                     <connections>
-                        <outlet property="recordButton" destination="H2h-16-uzH" id="IP3-XT-Zd9"/>
+                        <outlet property="recordButton" destination="H2h-16-uzH" id="38F-lM-6aM"/>
+                        <outlet property="textView" destination="yrN-la-cDg" id="5r5-S8-xsF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="91n-am-d78" userLabel="First Responder" sceneMemberID="firstResponder"/>
