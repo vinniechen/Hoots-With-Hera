@@ -175,6 +175,7 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
             recordButton.setTitle("Recognition not available", for: .disabled)
         }
     }
+
     
     // MARK: Interface Builder actions
     
@@ -207,24 +208,29 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
             currentGradient += 1
         } else {
             currentGradient = 0
-    @IBAction func resetButtonTapped(_ sender: Any) {
-        resetTimer()
-    }
-    
-    @objc func startTimer() {
-        if(isRunning) {
-            return
+            
         }
-        
         let gradientChangeAnimation = CABasicAnimation(keyPath: "colors")
         gradientChangeAnimation.duration = 5.0
         gradientChangeAnimation.toValue = gradientSet[currentGradient]
         gradientChangeAnimation.fillMode = kCAFillModeForwards
         gradientChangeAnimation.isRemovedOnCompletion = false
         gradient.add(gradientChangeAnimation, forKey: "colorChange")
+        
+
         gradient.zPosition = -0.05
-        stopwatch = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(UpdateTimer), userInfo: nil, repeats: true)
-        isRunning = true
+        
+    }
+    
+    @IBAction func resetButtonTapped(_ sender: Any) {
+        resetTimer()
+    }
+    
+    func startTimer() {
+        if(isRunning) {
+            return
+        }
+                stopwatch = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(UpdateTimer), userInfo: nil, repeats: true)
     }
     
     @objc func UpdateTimer() {
@@ -232,13 +238,13 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
         stopwatchLabel.text = String("\(Int(counter/10)) min \(Int(counter.truncatingRemainder(dividingBy: 10))) sec")
     }
     
-    @objc func pauseTimer() {
+    func pauseTimer() {
         recordButton.isEnabled = true
         stopwatch.invalidate()
         isRunning = false
     }
 
-    @objc func resetTimer() {
+    func resetTimer() {
         stopwatch.invalidate()
         isRunning = false
         counter = 0.00

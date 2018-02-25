@@ -16,30 +16,15 @@ PODS:
     - AFNetworking/NSURLSession
   - BDBOAuth1Manager (2.0.0):
     - AFNetworking/NSURLSession (~> 3.0.0)
-  - ChameleonFramework/Default (2.1.0)
-  - ChameleonFramework/Swift (2.1.0):
-    - ChameleonFramework/Default
 
 DEPENDENCIES:
   - AFNetworking
   - BDBOAuth1Manager
-  - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`, branch `wip/swift4`)
-
-EXTERNAL SOURCES:
-  ChameleonFramework:
-    :branch: wip/swift4
-    :git: https://github.com/ViccAlexander/Chameleon.git
-
-CHECKOUT OPTIONS:
-  ChameleonFramework:
-    :commit: db432ca1b1a3d8f83ee1f881208c0c960a325e73
-    :git: https://github.com/ViccAlexander/Chameleon.git
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
-  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
 
-PODFILE CHECKSUM: fe1907b51d6467dbf5dfd766888f230405ceb1fc
+PODFILE CHECKSUM: 02fd24333960d5313be2b3398991324f4ac19100
 
 COCOAPODS: 1.4.0
