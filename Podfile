@@ -8,6 +8,7 @@ target 'AthenaHacks' do
   # Pods for AthenaHacks
 	pod 'AFNetworking'
 	pod 'BDBOAuth1Manager'
+    pod 'ChameleonFramework/Swift'
 
 
   target 'AthenaHacksTests' do

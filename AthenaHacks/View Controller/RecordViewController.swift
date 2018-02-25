@@ -34,6 +34,8 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         // Disable the record buttons until authorization has been granted.
         recordButton.isEnabled = false
+        recordButton.layer.cornerRadius = recordButton.frame.height/2
+        recordButton.clipsToBounds = true
     }
     
     override public func viewDidAppear(_ animated: Bool) {
@@ -51,6 +53,7 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
                     
                 case .denied:
                     self.recordButton.isEnabled = false
+                    // change these to be alerts instead
                     self.recordButton.setTitle("User denied access to speech recognition", for: .disabled)
                     
                 case .restricted:
@@ -105,6 +108,7 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
                 
                 self.recordButton.isEnabled = true
                 self.recordButton.setTitle("Start Recording", for: [])
+                self.recordButton.backgroundColor = UIColor.green
             }
         }
         
@@ -144,6 +148,7 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
         } else {
             try! startRecording()
             recordButton.setTitle("Stop recording", for: [])
+            recordButton.backgroundColor = UIColor.red
         }
     }
     
@@ -277,25 +282,10 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
         task.resume()
     }
-    
+    */
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-//    func speechToText() {
-//
-//    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
