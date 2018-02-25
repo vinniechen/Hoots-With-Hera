@@ -95,6 +95,7 @@ class SettingsViewController: UIViewController {
     @IBAction func addWord(_ sender: Any) {
         if (wordField.text != "") {
         addButton.backgroundColor = UIColor(red: 237/255, green: 97/225, blue: 97/225, alpha: 1)
+            
         let s = wordField.text
         let list =  s!.components(separatedBy:", ")
         for phrase in list {
