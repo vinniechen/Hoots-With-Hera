@@ -1,0 +1,6 @@
+framework module Pods_AthenaHacksTests {
+  umbrella header "Pods-AthenaHacksTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
