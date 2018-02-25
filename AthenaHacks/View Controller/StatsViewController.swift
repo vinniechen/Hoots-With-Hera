@@ -25,23 +25,22 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
  
     }
     
-//    func assignQualifiers() {
-//        Qualifier.append("just")
-//        qualifiers.append("I think")
-//
-//    }
-    
     func checkQualifiers() {
         for phrase in Qualifiers.words {
             if speechText!.contains(phrase) {
  
                 print("contains \(phrase)")
-                qualifierCount[phrase] = 0;
+                if let count = qualifierCount[phrase] {
+                    qualifierCount.updateValue(count+1, forKey: phrase)
+                } else {
+                    qualifierCount[phrase] = 0
+                }
             }
         }
         for stats in qualifierCount {
             strings.append("\(stats.key): \(stats.value)")
         }
+        
         self.tableView.reloadData()
     }
     
