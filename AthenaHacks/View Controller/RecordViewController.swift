@@ -27,11 +27,21 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     private let audioEngine = AVAudioEngine()
     
+    // great-dient
+    let gradient = CAGradientLayer()
+    var gradientSet = [[CGColor]]()
+    var currentGradient: Int = 0
+    
+    let gradientOne = UIColor(red: 48/255, green: 62/255, blue: 103/255, alpha: 1).cgColor
+    let gradientTwo = UIColor(red: 244/255, green: 88/255, blue: 53/255, alpha: 1).cgColor
+    let gradientThree = UIColor(red: 196/255, green: 70/255, blue: 107/255, alpha: 1).cgColor
+    
     // MARK: UIViewController
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         
+
         // Disable the record buttons until authorization has been granted.
         recordButton.isEnabled = false
         recordButton.layer.cornerRadius = recordButton.frame.height/2
@@ -39,9 +49,26 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
     }
     
     override public func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        gradientSet.append([gradientOne, gradientTwo])
+        gradientSet.append([gradientTwo, gradientThree])
+        gradientSet.append([gradientThree, gradientOne])
+        
+        
+        gradient.frame = self.view.bounds
+        gradient.colors = gradientSet[currentGradient]
+        gradient.startPoint = CGPoint(x:0, y:0)
+        gradient.endPoint = CGPoint(x:1, y:1)
+        gradient.drawsAsynchronously = true
+        //self.view.layer.addSublayer(gradient)
+        
+        animateGradient()
+        
         speechRecognizer.delegate = self
         
         SFSpeechRecognizer.requestAuthorization { authStatus in
+            
             /*
              The callback may not be called on the main thread. Add an
              operation to the main queue to update the record button's state.
@@ -152,6 +179,21 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
     }
     
+    func animateGradient() {
+        if currentGradient < gradientSet.count - 1 {
+            currentGradient += 1
+        } else {
+            currentGradient = 0
+        }
+        
+        let gradientChangeAnimation = CABasicAnimation(keyPath: "colors")
+        gradientChangeAnimation.duration = 5.0
+        gradientChangeAnimation.toValue = gradientSet[currentGradient]
+        gradientChangeAnimation.fillMode = kCAFillModeForwards
+        gradientChangeAnimation.isRemovedOnCompletion = false
+        gradient.add(gradientChangeAnimation, forKey: "colorChange")
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let speech = textView.text
         let statsViewController = segue.destination as! StatsViewController
@@ -163,4 +205,12 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
         // Dispose of any resources that can be recreated.
     }
 
+}
+extension RecordViewController: CAAnimationDelegate {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        if flag {
+            gradient.colors = gradientSet[currentGradient]
+            animateGradient()
+        }
+    }
 }
