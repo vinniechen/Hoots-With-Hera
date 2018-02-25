@@ -209,6 +209,10 @@
                         <viewLayoutGuide key="safeArea" id="YEs-5Q-id0"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="History" image="iconmonstr-time-17-24" id="vtN-FC-New"/>
+                    <connections>
+                        <outlet property="tableView" destination="Ygp-gE-mVl" id="vtd-9u-AkR"/>
+                        <outlet property="totalCountLabel" destination="9Fk-j7-7Nl" id="yHY-fb-zU0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zrb-Yt-ydv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
