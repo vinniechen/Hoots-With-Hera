@@ -39,9 +39,9 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
     var gradientSet = [[CGColor]]()
     var currentGradient: Int = 0
     
-    let gradientOne = UIColor(red: 48/255, green: 62/255, blue: 103/255, alpha: 1).cgColor
-    let gradientTwo = UIColor(red: 244/255, green: 88/255, blue: 53/255, alpha: 1).cgColor
-    let gradientThree = UIColor(red: 196/255, green: 70/255, blue: 107/255, alpha: 1).cgColor
+    let gradientOne = UIColor(red: 159/255, green: 208/255, blue: 255/255, alpha: 1).cgColor
+    let gradientTwo = UIColor(red: 255/255, green: 151/255, blue: 145/255, alpha: 1).cgColor
+    let gradientThree = UIColor(red: 108/255, green: 174/255, blue: 234/255, alpha: 1).cgColor
     
     // MARK: UIViewController
     
@@ -148,7 +148,7 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
                 
                 self.recordButton.isEnabled = true
                 self.recordButton.setTitle("Start Recording", for: [])
-                self.recordButton.backgroundColor = UIColor.green
+                self.recordButton.backgroundColor = UIColor(red: 84/255, green: 158/225, blue: 224/225, alpha: 1)
             }
         }
         
@@ -183,9 +183,9 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBAction func recordButtonTapped() {
         // check if app is already recording
         if audioEngine.isRunning {
-            pauseTimer()
+            resetTimer()
             statsButton.isEnabled = true
-            statsButton.backgroundColor = UIColor.green
+            statsButton.backgroundColor = UIColor(red: 84/255, green: 158/225, blue: 224/225, alpha: 1)
             resetButton.isEnabled = true
             audioEngine.stop()
             recognitionRequest?.endAudio()
@@ -194,8 +194,8 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
         } else {
             try! startRecording()
             startTimer()
-            recordButton.setTitle("Pause recording", for: [])
-            recordButton.backgroundColor = UIColor.red
+            recordButton.setTitle("Stop recording", for: [])
+            recordButton.backgroundColor = UIColor(red: 237/255, green: 97/225, blue: 97/225, alpha: 1)
             resetButton.isEnabled = true
             statsButton.isEnabled = false
             statsButton.backgroundColor = UIColor.gray
@@ -235,7 +235,7 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     @objc func UpdateTimer() {
         counter = counter + 0.01
-        stopwatchLabel.text = String("\(Int(counter/10)) min \(Int(counter.truncatingRemainder(dividingBy: 10))) sec")
+        stopwatchLabel.text = String("\(Int(counter/60)) min \(Int(counter.truncatingRemainder(dividingBy: 60))) sec")
     }
     
     func pauseTimer() {
