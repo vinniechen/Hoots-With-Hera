@@ -22,11 +22,12 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.dataSource = self
         tableView.delegate = self
         checkQualifiers()
+        addToHistory()
  
     }
     
     func checkQualifiers() {
-        for phrase in Qualifiers.words {
+        for phrase in Qualifiers.words.keys {
             if speechText!.contains(phrase) {
                 let s = speechText
                 let tok =  s!.components(separatedBy:phrase)
@@ -39,6 +40,13 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         
         self.tableView.reloadData()
+    }
+    
+    func addToHistory() {
+        for phrase in qualifierCount.keys {
+            Qualifiers.words[phrase] = Qualifiers.words[phrase]! + qualifierCount[phrase]!
+        }
+        print(Qualifiers.words)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

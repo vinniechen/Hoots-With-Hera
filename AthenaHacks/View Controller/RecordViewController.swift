@@ -61,9 +61,11 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
         gradient.startPoint = CGPoint(x:0, y:0)
         gradient.endPoint = CGPoint(x:1, y:1)
         gradient.drawsAsynchronously = true
-        //self.view.layer.addSublayer(gradient)
+        
+        self.view.layer.addSublayer(gradient)
         
         animateGradient()
+
         
         speechRecognizer.delegate = self
         
@@ -192,6 +194,7 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
         gradientChangeAnimation.fillMode = kCAFillModeForwards
         gradientChangeAnimation.isRemovedOnCompletion = false
         gradient.add(gradientChangeAnimation, forKey: "colorChange")
+        gradient.zPosition = -0.05
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
