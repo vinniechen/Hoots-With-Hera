@@ -38,7 +38,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="8ET-dk-EaP"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Record" id="OXN-cU-8Xa"/>
+                    <tabBarItem key="tabBarItem" title="Record" image="icons8-add-record-50" id="OXN-cU-8Xa"/>
                     <connections>
                         <outlet property="recordButton" destination="H2h-16-uzH" id="38F-lM-6aM"/>
                         <outlet property="textView" destination="yrN-la-cDg" id="5r5-S8-xsF"/>
@@ -74,7 +74,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="YEs-5Q-id0"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="History" id="vtN-FC-New"/>
+                    <tabBarItem key="tabBarItem" title="History" image="icons8-time-machine-50" id="vtN-FC-New"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zrb-Yt-ydv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -101,4 +101,8 @@
             <point key="canvasLocation" x="-163.19999999999999" y="132.23388305847078"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-add-record-50" width="50" height="50"/>
+        <image name="icons8-time-machine-50" width="50" height="50"/>
+    </resources>
 </document>
