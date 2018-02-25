@@ -8,6 +8,7 @@
 
 import UIKit
 import BDBOAuth1Manager
+import AFNetworking
 
 class MicrosoftClient: BDBOAuth1SessionManager {
 
