@@ -34,6 +34,8 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         // Disable the record buttons until authorization has been granted.
         recordButton.isEnabled = false
+        recordButton.layer.cornerRadius = recordButton.frame.height/2
+        recordButton.clipsToBounds = true
     }
     
     override public func viewDidAppear(_ animated: Bool) {
@@ -51,6 +53,7 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
                     
                 case .denied:
                     self.recordButton.isEnabled = false
+                    // change these to be alerts instead
                     self.recordButton.setTitle("User denied access to speech recognition", for: .disabled)
                     
                 case .restricted:
@@ -105,6 +108,7 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
                 
                 self.recordButton.isEnabled = true
                 self.recordButton.setTitle("Start Recording", for: [])
+                self.recordButton.backgroundColor = UIColor.green
             }
         }
         
@@ -144,12 +148,144 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
         } else {
             try! startRecording()
             recordButton.setTitle("Stop recording", for: [])
+            recordButton.backgroundColor = UIColor.red
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let statsViewController = segue.destination as! StatsViewController
-        statsViewController.speechText = textView.text
+    
+ /*   @IBOutlet weak var recordButton: UIButton!
+    let audioFilename = getDocumentsDirectory().appendingPathComponent("recording.m4a")
+    var status: Any?
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        recordingSession = AVAudioSession.sharedInstance()
+        
+        do {
+            try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+            try recordingSession.setActive(true)
+            recordingSession.requestRecordPermission() { [unowned self] allowed in
+                DispatchQueue.main.async {
+                    if allowed {
+                    } else {
+                        // failed to record!
+                    }
+                }
+            }
+        } catch {
+            // failed to record!
+        }
+        
+        playSound()
+        
+    }
+    
+//    func loadRecordingUI() {
+//        recordButton = UIButton(frame: CGRect(x: 64, y: 64, width: 128, height: 64))
+//        recordButton.setTitle("Tap to Record", for: .normal)
+//        recordButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title1)
+//        recordButton.addTarget(self, action: #selector(recordTapped), for: .touchUpInside)
+//        view.addSubview(recordButton)
+//    }
+    
+    class func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
+    
+
+    
+    func playSound() {
+        do {
+            soundPlayer = try AVAudioPlayer(contentsOf: audioFilename)
+            soundPlayer?.play()
+        } catch {
+            let ac = UIAlertController(title: "Playback failed", message: "There was a problem playing.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
+    }
+    
+    func startRecording() {
+//        let audioFilename = getDocumentsDirectory().appendingPathComponent("recording.m4a")
+//
+        let settings = [
+            AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+            AVSampleRateKey: 12000,
+            AVNumberOfChannelsKey: 1,
+            AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+        ]
+        
+        do {
+            audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
+            audioRecorder.delegate = self
+            audioRecorder.record()
+            
+            recordButton.setTitle("Tap to Stop", for: .normal)
+        } catch {
+            finishRecording(success: false)
+        }
+    }
+    
+    func finishRecording(success: Bool) {
+        audioRecorder.stop()
+        audioRecorder = nil
+        
+        if success {
+            recordButton.setTitle("Tap to Re-record", for: .normal)
+            playSound()
+        } else {
+            recordButton.setTitle("Tap to Record", for: .normal)
+            // recording failed :(
+        }
+    }
+    
+    @IBAction func recordTapped(_ sender: Any) {
+        if audioRecorder == nil {
+            startRecording()
+        } else {
+            finishRecording(success: true)
+        }
+    
+    }
+    
+//    @objc func recordTapped() {
+//        if audioRecorder == nil {
+//            startRecording()
+//        } else {
+//            finishRecording(success: true)
+//        }
+//    }
+    
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        if !flag {
+            finishRecording(success: false)
+        }
+    }
+    
+    func getText() {
+        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
+        var request =  URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+        request.httpMethod = "POST"
+        //request.httpBody = paramString.dataUsingEncoding(NSUTF8StringEncoding)
+        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: OperationQueue.main)
+        
+        let task = session.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let data = data {
+                print(data)
+            }
+        }
+        task.resume()
+    }
+    */
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
 }
