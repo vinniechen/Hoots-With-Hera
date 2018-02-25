@@ -18,6 +18,8 @@
 		338D3C942042726100A43EE0 /* MicrosoftClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338D3C932042726100A43EE0 /* MicrosoftClient.swift */; };
 		338D3C962042735800A43EE0 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338D3C952042735800A43EE0 /* HistoryViewController.swift */; };
 		33F96D7F2042AF8900167759 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F96D7E2042AF8900167759 /* StatsViewController.swift */; };
+		33F96D822042B5C700167759 /* Qualifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F96D812042B5C700167759 /* Qualifiers.swift */; };
+		33F96D842042BB3700167759 /* StatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F96D832042BB3700167759 /* StatsCell.swift */; };
 		67EAF37A78E29BD0A4886F1D /* Pods_AthenaHacks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C60BAEC5140129FF758463F /* Pods_AthenaHacks.framework */; };
 		93605A562A6B232868EC6AB7 /* Pods_AthenaHacksUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA7E372BDF477C7CEC11F62D /* Pods_AthenaHacksUITests.framework */; };
 		F07156C582BB3B3EFA2DFD66 /* Pods_AthenaHacksTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78885924735B309160C99456 /* Pods_AthenaHacksTests.framework */; };
@@ -61,6 +63,8 @@
 		338D3C932042726100A43EE0 /* MicrosoftClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrosoftClient.swift; sourceTree = "<group>"; };
 		338D3C952042735800A43EE0 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		33F96D7E2042AF8900167759 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		33F96D812042B5C700167759 /* Qualifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Qualifiers.swift; sourceTree = "<group>"; };
+		33F96D832042BB3700167759 /* StatsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCell.swift; sourceTree = "<group>"; };
 		6329369AA9A3FAECFA03F7AD /* Pods-AthenaHacksTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AthenaHacksTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AthenaHacksTests/Pods-AthenaHacksTests.release.xcconfig"; sourceTree = "<group>"; };
 		78885924735B309160C99456 /* Pods_AthenaHacksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AthenaHacksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E3226A341B1466BB834BE99 /* Pods-AthenaHacksUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AthenaHacksUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AthenaHacksUITests/Pods-AthenaHacksUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				338D3C59204260BA00A43EE0 /* AppDelegate.swift */,
+				33F96D802042B5AF00167759 /* Models */,
 				338D3C87204260E800A43EE0 /* API */,
 				338D3C882042702C00A43EE0 /* View Controller */,
 				338D3C5D204260BA00A43EE0 /* Main.storyboard */,
@@ -191,6 +196,15 @@
 				33F96D7E2042AF8900167759 /* StatsViewController.swift */,
 			);
 			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		33F96D802042B5AF00167759 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				33F96D812042B5C700167759 /* Qualifiers.swift */,
+				33F96D832042BB3700167759 /* StatsCell.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -488,6 +502,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33F96D822042B5C700167759 /* Qualifiers.swift in Sources */,
+				33F96D842042BB3700167759 /* StatsCell.swift in Sources */,
 				338D3C8C204271EC00A43EE0 /* RecordViewController.swift in Sources */,
 				338D3C5A204260BA00A43EE0 /* AppDelegate.swift in Sources */,
 				338D3C902042721800A43EE0 /* SettingsViewController.swift in Sources */,
