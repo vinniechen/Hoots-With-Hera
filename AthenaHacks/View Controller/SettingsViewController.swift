@@ -23,6 +23,14 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
+//        let tapGesture = UITapGestureRecognizer(target: self, action: Selector("hideKeyboard"))
+//        tapGesture.cancelsTouchesInView = true
+//        wordField.addGestureRecognizer(tapGesture)
+
+
+        
         addButton.layer.cornerRadius = addButton.frame.height/2
         addButton.clipsToBounds = true
         // Do any additional setup after loading the view.
@@ -32,13 +40,19 @@ class SettingsViewController: UIViewController {
         }
         
     }
+//    func hideKeyboard() {
+//        wordField.endEditing(true)
+//    }
 
     override public func viewDidAppear(_ animated: Bool) {
         var qual = ""
         for word in Qualifiers.words.keys {
             qual = "\(qual) \(word),"
         }
+        qual.removeFirst()
+        qual.removeLast()
         myQualifiers.text = qual
+        
         super.viewDidAppear(animated)
         
         gradientSet.append([gradientOne, gradientTwo])
@@ -87,6 +101,11 @@ class SettingsViewController: UIViewController {
         
     }
     
+
+    
+    @IBAction func onTap(_ sender: Any) {
+        view.endEditing(true)
+    }
     /*
     // MARK: - Navigation
 
@@ -96,6 +115,7 @@ class SettingsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
 
 }
 extension SettingsViewController: CAAnimationDelegate {

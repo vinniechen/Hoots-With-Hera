@@ -30,7 +30,7 @@
                                     <action selector="recordButtonTapped" destination="fM3-Ji-LAo" eventType="touchUpInside" id="qcQ-RN-Gut"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.69999999999999996" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yrN-la-cDg">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.69999999999999996" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yrN-la-cDg">
                                 <rect key="frame" x="49" y="215" width="279" height="310"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -100,8 +100,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Qr-6d-wmE">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Qr-6d-wmE">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.40784313725490196" green="0.6705882352941176" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MDk-Ym-1BS">
@@ -159,12 +160,6 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="8Qr-6d-wmE" firstAttribute="leading" secondItem="Cnh-EV-zqB" secondAttribute="leading" id="6Zh-b2-Cyq"/>
-                            <constraint firstItem="8Qr-6d-wmE" firstAttribute="top" secondItem="bjw-0V-Dxu" secondAttribute="top" id="Quh-5O-E6F"/>
-                            <constraint firstItem="8Qr-6d-wmE" firstAttribute="bottom" secondItem="Cnh-EV-zqB" secondAttribute="bottom" id="VWb-wu-RQc"/>
-                            <constraint firstItem="8Qr-6d-wmE" firstAttribute="trailing" secondItem="Cnh-EV-zqB" secondAttribute="trailing" id="WVZ-kU-dTk"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Cnh-EV-zqB"/>
                     </view>
                     <connections>
@@ -218,7 +213,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Separate by commas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52r-j0-SZW">
-                                <rect key="frame" x="45" y="181" width="284" height="21"/>
+                                <rect key="frame" x="45" y="176" width="284" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -231,8 +226,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.69999999999999996" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="enw-FH-48R">
-                                <rect key="frame" x="45" y="410" width="284" height="159"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.69999999999999996" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="enw-FH-48R">
+                                <rect key="frame" x="45" y="400" width="284" height="159"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
@@ -240,7 +235,11 @@
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="eY7-fG-Rme"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="EUA-1U-FAG" appends="YES" id="X1X-6O-o4u"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="iconmonstr-tools-9-24" id="Hbq-Rx-YSg"/>
                     <connections>
@@ -250,6 +249,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q5w-Zh-sDH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="EUA-1U-FAG">
+                    <connections>
+                        <action selector="onTap:" destination="Prr-jb-f2Q" id="ABb-yK-5ic"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-164" y="1054.4334975369459"/>
         </scene>
@@ -337,6 +341,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.62575348984771573" green="0.30610698835865957" blue="0.53519225865990772" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="fM3-Ji-LAo" kind="relationship" relationship="viewControllers" id="YwN-no-FIx"/>

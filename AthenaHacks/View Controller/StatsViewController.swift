@@ -28,16 +28,10 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func checkQualifiers() {
         for phrase in Qualifiers.words.keys {
-            if speechText!.contains(phrase) {
+            if speechText!.lowercased().contains(phrase.lowercased())  {
                 let s = speechText
                 let tok =  s!.components(separatedBy:phrase)
-                print("contains \(phrase)")
-                if let count = qualifierCount[phrase] {
-                    qualifierCount.updateValue(count+1, forKey: phrase)
-                    print("\(phrase): \(count)")
-                } else {
                     qualifierCount[phrase] = tok.count-1
-                }
             }
         }
         // convert it to a string to be able to display in textView
