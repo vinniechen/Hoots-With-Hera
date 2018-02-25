@@ -16,7 +16,6 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     var qualifierCount: [String : Int] = [:]
     var strings: [String] = []
     
-    @IBOutlet weak var textView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -28,15 +27,17 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     func checkQualifiers() {
         for phrase in Qualifiers.words {
             if speechText!.contains(phrase) {
- 
+                
                 print("contains \(phrase)")
                 if let count = qualifierCount[phrase] {
                     qualifierCount.updateValue(count+1, forKey: phrase)
+                    print("\(phrase): \(count)")
                 } else {
-                    qualifierCount[phrase] = 0
+                    qualifierCount[phrase] = 1
                 }
             }
         }
+        // convert it to a string to be able to display in textView
         for stats in qualifierCount {
             strings.append("\(stats.key): \(stats.value)")
         }
@@ -52,7 +53,6 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "StatsCell", for: indexPath) as! StatsCell
         
         let phrase = strings[indexPath.row]
-
 
         cell.statsLabel.text = phrase
         
@@ -72,14 +72,5 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.dismiss(animated: true) {}
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

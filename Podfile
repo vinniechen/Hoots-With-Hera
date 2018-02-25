@@ -8,6 +8,7 @@ target 'AthenaHacks' do
   # Pods for AthenaHacks
 	pod 'AFNetworking'
 	pod 'BDBOAuth1Manager'
+pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git', :branch => 'wip/swift4'
 
 
   target 'AthenaHacksTests' do
