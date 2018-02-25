@@ -10,20 +10,20 @@ import UIKit
 
 class StatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+
+    @IBOutlet weak var lastSpeechLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var speechText: String?
 
     var qualifierCount: [String : Int] = [:]
     var strings: [String] = []
     
-    @IBOutlet weak var textView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
         checkQualifiers()
         addToHistory()
- 
     }
     
     func checkQualifiers() {
@@ -38,7 +38,7 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         for stats in qualifierCount {
             strings.append("\(stats.key): \(stats.value)")
         }
-        
+        checkLast()
         self.tableView.reloadData()
     }
     
@@ -47,6 +47,25 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
             Qualifiers.words[phrase] = Qualifiers.words[phrase]! + qualifierCount[phrase]!
         }
         print(Qualifiers.words)
+    }
+    func checkLast() {
+       var last = ""
+        if (Qualifiers.lastCount == 0 ) {
+        }
+        else if (qualifierCount.count == 0) {
+            last = "You said no qualifiers. Hoot hoot!"
+        }
+        else if (qualifierCount.count > Qualifiers.lastCount) {
+            last = "You said \(qualifierCount.count - Qualifiers.lastCount) more qualifiers than your last hoot."
+        }
+        else if (qualifierCount.count < Qualifiers.lastCount) {
+            last = "You said \(Qualifiers.lastCount - qualifierCount.count ) fewer qualifiers than your last hoot!"
+        }
+        else {
+            last = "You said the same amount of qualifiers as your last hoot."
+        }
+        Qualifiers.lastCount = qualifierCount.count
+        lastSpeechLabel.text = last
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
