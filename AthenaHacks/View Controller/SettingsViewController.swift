@@ -93,15 +93,31 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func addWord(_ sender: Any) {
+        if (wordField.text != "") {
+        addButton.backgroundColor = UIColor(red: 237/255, green: 97/225, blue: 97/225, alpha: 1)
         let s = wordField.text
         let list =  s!.components(separatedBy:", ")
         for phrase in list {
             Qualifiers.words[phrase] = 0
         }
-        
+        var qual = ""
+        for word in Qualifiers.words.keys {
+            qual = "\(qual) \(word),"
+        }
+        qual.removeFirst()
+        qual.removeLast()
+        myQualifiers.text = qual
+        wordField.text = ""
+        wordField.resignFirstResponder()
+        }
     }
     
-
+    @IBAction func touchInside(_ sender: Any) {
+    addButton.backgroundColor = UIColor(red: 84/255, green: 158/225, blue: 224/225, alpha: 1)}
+    
+    @IBAction func onEditing(_ sender: Any) {
+        addButton.backgroundColor = UIColor(red: 84/255, green: 158/225, blue: 224/225, alpha: 1)
+    }
     
     @IBAction func onTap(_ sender: Any) {
         view.endEditing(true)

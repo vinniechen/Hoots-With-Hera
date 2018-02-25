@@ -62,6 +62,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             }
             i = i + 1;
         }
+        totalCountLabel.text = "\(totalCount)"
         
         tableView.reloadData()
     }
