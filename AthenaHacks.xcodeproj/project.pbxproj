@@ -15,7 +15,6 @@
 		338D3C7A204260BB00A43EE0 /* AthenaHacksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338D3C79204260BB00A43EE0 /* AthenaHacksUITests.swift */; };
 		338D3C8C204271EC00A43EE0 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338D3C8B204271EC00A43EE0 /* RecordViewController.swift */; };
 		338D3C902042721800A43EE0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338D3C8F2042721800A43EE0 /* SettingsViewController.swift */; };
-		338D3C942042726100A43EE0 /* MicrosoftClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338D3C932042726100A43EE0 /* MicrosoftClient.swift */; };
 		338D3C962042735800A43EE0 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338D3C952042735800A43EE0 /* HistoryViewController.swift */; };
 		33F96D7F2042AF8900167759 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F96D7E2042AF8900167759 /* StatsViewController.swift */; };
 		33F96D822042B5C700167759 /* Qualifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F96D812042B5C700167759 /* Qualifiers.swift */; };
@@ -61,7 +60,6 @@
 		338D3C7B204260BB00A43EE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		338D3C8B204271EC00A43EE0 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		338D3C8F2042721800A43EE0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		338D3C932042726100A43EE0 /* MicrosoftClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrosoftClient.swift; sourceTree = "<group>"; };
 		338D3C952042735800A43EE0 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		33F96D7E2042AF8900167759 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		33F96D812042B5C700167759 /* Qualifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Qualifiers.swift; sourceTree = "<group>"; };
@@ -153,7 +151,6 @@
 			children = (
 				338D3C59204260BA00A43EE0 /* AppDelegate.swift */,
 				33F96D802042B5AF00167759 /* Models */,
-				338D3C87204260E800A43EE0 /* API */,
 				338D3C882042702C00A43EE0 /* View Controller */,
 				338D3C5D204260BA00A43EE0 /* Main.storyboard */,
 				338D3C60204260BA00A43EE0 /* Assets.xcassets */,
@@ -179,14 +176,6 @@
 				338D3C7B204260BB00A43EE0 /* Info.plist */,
 			);
 			path = AthenaHacksUITests;
-			sourceTree = "<group>";
-		};
-		338D3C87204260E800A43EE0 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				338D3C932042726100A43EE0 /* MicrosoftClient.swift */,
-			);
-			path = API;
 			sourceTree = "<group>";
 		};
 		338D3C882042702C00A43EE0 /* View Controller */ = {
@@ -513,7 +502,6 @@
 				338D3C902042721800A43EE0 /* SettingsViewController.swift in Sources */,
 				338D3C962042735800A43EE0 /* HistoryViewController.swift in Sources */,
 				33F96D7F2042AF8900167759 /* StatsViewController.swift in Sources */,
-				338D3C942042726100A43EE0 /* MicrosoftClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

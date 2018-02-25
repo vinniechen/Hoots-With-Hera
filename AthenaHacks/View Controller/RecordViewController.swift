@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AFNetworking
 import AVFoundation
 import Speech
 
@@ -76,6 +75,7 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
         self.view.layer.addSublayer(gradient)
         
         animateGradient()
+        textView.text = "(Go ahead, I'm listening)"
 
         
         speechRecognizer.delegate = self
@@ -161,7 +161,7 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         try audioEngine.start()
         
-        textView.text = "(Go ahead, I'm listening)"
+        
     }
     
     // MARK: SFSpeechRecognizerDelegate

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import BDBOAuth1Manager
 
 
 @UIApplicationMain

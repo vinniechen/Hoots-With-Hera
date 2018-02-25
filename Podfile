@@ -6,8 +6,6 @@ target 'AthenaHacks' do
   use_frameworks!
 
   # Pods for AthenaHacks
-	pod 'AFNetworking'
-	pod 'BDBOAuth1Manager'
 
 
   target 'AthenaHacksTests' do
