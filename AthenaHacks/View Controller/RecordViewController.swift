@@ -202,6 +202,11 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
     }
     
+    func animateGradient() {
+        if currentGradient < gradientSet.count - 1 {
+            currentGradient += 1
+        } else {
+            currentGradient = 0
     @IBAction func resetButtonTapped(_ sender: Any) {
         resetTimer()
     }
@@ -211,6 +216,13 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
             return
         }
         
+        let gradientChangeAnimation = CABasicAnimation(keyPath: "colors")
+        gradientChangeAnimation.duration = 5.0
+        gradientChangeAnimation.toValue = gradientSet[currentGradient]
+        gradientChangeAnimation.fillMode = kCAFillModeForwards
+        gradientChangeAnimation.isRemovedOnCompletion = false
+        gradient.add(gradientChangeAnimation, forKey: "colorChange")
+        gradient.zPosition = -0.05
         stopwatch = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(UpdateTimer), userInfo: nil, repeats: true)
         isRunning = true
     }
