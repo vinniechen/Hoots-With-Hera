@@ -32,9 +32,15 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
                 let s = speechText
                 let tok =  s!.components(separatedBy:phrase)
                 print("contains \(phrase)")
-                qualifierCount[phrase] = tok.count-1
+                if let count = qualifierCount[phrase] {
+                    qualifierCount.updateValue(count+1, forKey: phrase)
+                    print("\(phrase): \(count)")
+                } else {
+                    qualifierCount[phrase] = tok.count-1
+                }
             }
         }
+        // convert it to a string to be able to display in textView
         for stats in qualifierCount {
             strings.append("\(stats.key): \(stats.value)")
         }
@@ -77,7 +83,6 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let phrase = strings[indexPath.row]
 
-
         cell.statsLabel.text = phrase
         
         return cell
@@ -96,14 +101,5 @@ class StatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.dismiss(animated: true) {}
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

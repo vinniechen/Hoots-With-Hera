@@ -11,6 +11,7 @@ import UIKit
 class StatsCell: UITableViewCell {
 
     @IBOutlet weak var statsLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

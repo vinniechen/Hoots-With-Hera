@@ -14,11 +14,18 @@ import Speech
 var recordingSession: AVAudioSession!
 var audioRecorder: AVAudioRecorder!
 var soundPlayer: AVAudioPlayer?
+var counter = 0.0
+var stopwatch = Timer()
+var isRunning = false
 
 class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
     
+    @IBOutlet weak var stopwatchLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var statsButton: UIButton!
+    
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
     
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
@@ -40,12 +47,16 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        
-
-        // Disable the record buttons until authorization has been granted.
-        recordButton.isEnabled = false
+        stopwatchLabel.text = String("\(Int(counter/10)) min \(Int(counter.truncatingRemainder(dividingBy: 10))) sec")
+       
         recordButton.layer.cornerRadius = recordButton.frame.height/2
         recordButton.clipsToBounds = true
+        statsButton.layer.cornerRadius = statsButton.frame.height/2
+        statsButton.clipsToBounds = true
+        
+        statsButton.isEnabled = false
+        statsButton.backgroundColor = UIColor.gray
+        resetButton.isEnabled = false
     }
     
     override public func viewDidAppear(_ animated: Bool) {
@@ -68,7 +79,6 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
 
         
         speechRecognizer.delegate = self
-        
         SFSpeechRecognizer.requestAuthorization { authStatus in
             
             /*
@@ -82,7 +92,8 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
                     
                 case .denied:
                     self.recordButton.isEnabled = false
-                    // change these to be alerts instead
+                    
+                    // TODO: change these to be alerts instead
                     self.recordButton.setTitle("User denied access to speech recognition", for: .disabled)
                     
                 case .restricted:
@@ -169,15 +180,25 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
     
 
     @IBAction func recordButtonTapped() {
+        // check if app is already recording
         if audioEngine.isRunning {
+            pauseTimer()
+            statsButton.isEnabled = true
+            statsButton.backgroundColor = UIColor.green
+            resetButton.isEnabled = true
             audioEngine.stop()
             recognitionRequest?.endAudio()
             recordButton.isEnabled = false
-            recordButton.setTitle("Stopping", for: .disabled)
+            //recordButton.setTitle("Stopping", for: .disabled)
         } else {
             try! startRecording()
-            recordButton.setTitle("Stop recording", for: [])
+            startTimer()
+            recordButton.setTitle("Pause recording", for: [])
             recordButton.backgroundColor = UIColor.red
+            resetButton.isEnabled = true
+            statsButton.isEnabled = false
+            statsButton.backgroundColor = UIColor.gray
+            resetButton.isEnabled = false
         }
     }
     
@@ -186,6 +207,13 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
             currentGradient += 1
         } else {
             currentGradient = 0
+    @IBAction func resetButtonTapped(_ sender: Any) {
+        resetTimer()
+    }
+    
+    @objc func startTimer() {
+        if(isRunning) {
+            return
         }
         
         let gradientChangeAnimation = CABasicAnimation(keyPath: "colors")
@@ -195,6 +223,26 @@ class RecordViewController: UIViewController, SFSpeechRecognizerDelegate {
         gradientChangeAnimation.isRemovedOnCompletion = false
         gradient.add(gradientChangeAnimation, forKey: "colorChange")
         gradient.zPosition = -0.05
+        stopwatch = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(UpdateTimer), userInfo: nil, repeats: true)
+        isRunning = true
+    }
+    
+    @objc func UpdateTimer() {
+        counter = counter + 0.01
+        stopwatchLabel.text = String("\(Int(counter/10)) min \(Int(counter.truncatingRemainder(dividingBy: 10))) sec")
+    }
+    
+    @objc func pauseTimer() {
+        recordButton.isEnabled = true
+        stopwatch.invalidate()
+        isRunning = false
+    }
+
+    @objc func resetTimer() {
+        stopwatch.invalidate()
+        isRunning = false
+        counter = 0.00
+        stopwatchLabel.text = String("\(Int(counter/10)) min \(Int(counter.truncatingRemainder(dividingBy: 10))) sec")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
